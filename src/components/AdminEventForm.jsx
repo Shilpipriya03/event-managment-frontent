@@ -20,7 +20,7 @@ const AdminEventForm = () => {
 
   useEffect(() => {
     if (isEditMode) {
-      const mockEvent = mockEvents[id - 1];
+      const mockEvent = mockEvents.find((event) => event.id === parseInt(id));
       if (mockEvent) {
         setEvent({
           title: mockEvent.title || "",
@@ -50,14 +50,15 @@ const AdminEventForm = () => {
     };
 
     if (isEditMode) {
-      console.log("Update event", eventData);
-      toast.success("Update Successfull");
-      // Update event logic here
+      const index = mockEvents.findIndex((event) => event.id === parseInt(id));
+      if (index !== -1) {
+        mockEvents[index] = { ...eventData, id: parseInt(id) }; // Update
+      }
+      toast.success("Event updated successfully!");
     } else {
-      console.log("Create event", eventData);
-      toast.success("Event Created Successfully");
-
-      // Create event logic here
+      const newId = mockEvents.length + 1;
+      mockEvents.push({ ...eventData, id: newId }); // Create
+      toast.success("Event created successfully!");
     }
 
     navigate("/admin/events");

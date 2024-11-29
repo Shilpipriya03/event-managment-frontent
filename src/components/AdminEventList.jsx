@@ -78,13 +78,10 @@ const TableHeader = () => (
     </th>
     <th
       scope="col"
-      className=" absolute pl-36 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider"
+      className="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase tracking-wider"
     >
-      Location
+      Action
     </th>
-    {/* <th scope="col" className="relative px-6 py-3">
-      <span className="sr-only">Actions</span>
-    </th> */}
   </tr>
 );
 
